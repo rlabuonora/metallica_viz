@@ -1,0 +1,5 @@
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti$ git status
+fatal: Not a git repository (or any of the parent directories): .git
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti$ git init
+Initialized empty Git repository in /home/rafa/Desktop/spoti/.git/
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti$ git add -
