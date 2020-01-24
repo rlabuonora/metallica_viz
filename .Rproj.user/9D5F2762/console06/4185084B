@@ -2,4 +2,197 @@
 fatal: Not a git repository (or any of the parent directories): .git
 ]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti$ git init
 Initialized empty Git repository in /home/rafa/Desktop/spoti/.git/
-]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti$ git add -
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti$ git add -A
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti$ git commit M "[K[K[K-m "Initial commit"
+[master (root-commit) 22fb2cf] Initial commit
+ 11 files changed, 136 insertions(+)
+ create mode 100644 .Rproj.user/9D5F2762/console06/4185084B
+ create mode 100644 .Rproj.user/9D5F2762/console06/INDEX001
+ create mode 100644 .Rproj.user/9D5F2762/sources/prop/7166558F
+ create mode 100644 .Rproj.user/9D5F2762/sources/prop/INDEX
+ create mode 100644 .Rproj.user/9D5F2762/sources/s-34C79E41/8204DD71
+ create mode 100644 .Rproj.user/9D5F2762/sources/s-34C79E41/8204DD71-contents
+ create mode 100644 .Rproj.user/9D5F2762/sources/s-34C79E41/lock_file
+ create mode 100644 .Rproj.user/shared/notebooks/patch-chunk-names
+ create mode 100644 import.R
+ create mode 100644 spoti.Rproj
+ create mode 100644 visualize.R
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ (base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ git checkout
+M	.Rproj.user/9D5F2762/console06/4185084B
+M	.Rproj.user/9D5F2762/sources/prop/7166558F
+M	.Rproj.user/9D5F2762/sources/s-34C79E41/8204DD71
+M	.Rproj.user/9D5F2762/sources/s-34C79E41/8204DD71-contents
+M	import.R
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/9D5F2762/console06/4185084B[m
+	[31mmodified:   .Rproj.user/9D5F2762/sources/prop/7166558F[m
+	[31mmodified:   .Rproj.user/9D5F2762/sources/s-34C79E41/8204DD71[m
+	[31mmodified:   .Rproj.user/9D5F2762/sources/s-34C79E41/8204DD71-contents[m
+	[31mmodified:   import.R[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.Rproj.user/9D5F2762/console06/4185084B.env[m
+	[31m.Rproj.user/9D5F2762/sources/s-34C79E41/6C31CC61[m
+	[31m.Rproj.user/9D5F2762/sources/s-34C79E41/6C31CC61-contents[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ git diff import.R
+[?1h=[1mdiff --git a/import.R b/import.R[m[m
+[1mindex 468b42a..4dfb2ca 100644[m[m
+[1m--- a/import.R[m[m
+[1m+++ b/import.R[m[m
+[36m@@ -7,21 +7,22 @@[m [mMETALLICA_ID <- "2ye2Wgw4gimLv2eAKyk1NB"[m[m
+ metallica_albums <- get_artist_albums(id=METALLICA_ID,[m[m
+                                       include_groups = "album",[m[m
+                                       limit = 50) %>% [m[m
+[31m-  select(album_name=name, album_id=id) %>% [m[m
+[32m+[m[32m  select(album_name=name, album_id=id, release_date) %>%[m[41m [m[m
+   slice(6, 11, 13, 17, 19, 21, 26, 30, 35, 39, 43)[m[m
+:[K[K[K:[K[K:[K[K[7mNo next tag  (press RETURN)[27m[12;1H[K[K:[K[K[?1l>]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ git checkout import.R
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ culr -o [K[KO [K[K[K[K[K[Kr, [K[Kk .[K[K[Kl -O https://famfont s.com/zips/metallica.zip
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 13460  100 13460    0     0  19065      0 --:--:-- --:--:-- --:--:-- 19038
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ unzip metallica.zip 
+Archive:  metallica.zip
+   creating: metallica/
+  inflating: metallica/how_to.txt    
+  inflating: metallica/PASTOROF.TTF  
+  inflating: metallica/Read_Me.txt   
+  inflating: metallica/Famous Fonts.txt  
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ cat metallica/how_to.txtt 
+There's a  tricky trick you can do to get the flipped characters in
+Pastor of Muppets.
+
+Use alt then a 4 number combo and you should get a flipped version of each letter.
+
+A - alt+0188
+B - alt+0189
+C - alt+0190
+D - alt+0191
+E - alt+0192
+F - alt+0193
+G - alt+0194
+H - alt+0195
+I - alt+0196
+J - alt+0197
+K - alt+0198
+L - alt+0199
+M - alt+0200
+N - alt+0201
+O - alt+0202
+P - alt+0203
+Q - alt+0204
+R - alt+0205
+S - alt+0206
+T - alt+0207
+U - alt+0208
+V - alt+0209
+W - alt+0210
+X - alt+0211
+Y - alt+0212
+Z - alt+0213
+
+This just goes to show you that I'm not lazy and I deserve a donation.
+If you don't want to send money that's fine.  Cds are great too ...
+or anything really.
+
+The address is in the donation section on any of my webpages.
+
+The font contained in this archive is Freeware.
+No payment is required for the use of this font.  It's free!
+Commercial or personal use?  It doesn't matter, it's free.
+
+I make all the fonts (over 125 of them) on my web page and
+they're all free but I'd love it if you sent a donation.
+
+The page is called Larabie Fonts
+It can be found at various mirror sites.
+
+try:
+www.delirium.com/larabiefonts
+www.swankarmy.net/larabiefonts
+www.goldenapple.com/larabiefonts
+highland.mit.edu/larabiefonts
+web.mit.edu/zudark/larabiefonts
+
+if all else fails there might be some links at
+
+
+q]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ 
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ 
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ q
+
+The program 'q' can be found in the following packages:
+ * python-q-text-as-data
+ * python3-q-text-as-data
+Try: sudo apt install <selected package>
+g]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ 
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/9D5F2762/console06/4185084B[m
+	[31mmodified:   .Rproj.user/9D5F2762/console06/INDEX001[m
+	[31mmodified:   .Rproj.user/9D5F2762/sources/prop/7166558F[m
+	[31mmodified:   .Rproj.user/9D5F2762/sources/prop/INDEX[m
+	[31mdeleted:    .Rproj.user/9D5F2762/sources/s-34C79E41/8204DD71[m
+	[31mdeleted:    .Rproj.user/9D5F2762/sources/s-34C79E41/8204DD71-contents[m
+	[31mdeleted:    .Rproj.user/9D5F2762/sources/s-34C79E41/lock_file[m
+	[31mmodified:   import.R[m
+	[31mmodified:   visualize.R[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.gitignore[m
+	[31mmetallica.rds[m
+	[31mmetallica.zip[m
+	[31mmetallica/[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ mv metallica ton[K[K[Kfont
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ rm metallica.zip 
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ cd me[K[Kfont/
+]0;/home/rafa/Desktop/spoti/font(base) rafa@rafa-VirtualBox:~/Desktop/spoti/font(master)$ ls
+[0m[01;32mFamous Fonts.txt[0m  [01;32mhow_to.txt[0m  [01;32mPASTOROF.TTF[0m  [01;32mRead_Me.txt[0m
+]0;/home/rafa/Desktop/spoti/font(base) rafa@rafa-VirtualBox:~/Desktop/spoti/font(master)$ rm Read_Me.txt [K[K[K[K[K[K[K[K[K[K[K[K*.txt
+]0;/home/rafa/Desktop/spoti/font(base) rafa@rafa-VirtualBox:~/Desktop/spoti/font(master)$ ls
+[0m[01;32mPASTOROF.TTF[0m
+]0;/home/rafa/Desktop/spoti/font(base) rafa@rafa-VirtualBox:~/Desktop/spoti/font(master)$ cd ..
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ ls
+[0m[34;42mfont[0m  import.R  metallica.rds  spoti.Rproj  visualize.R
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/9D5F2762/console06/4185084B[m
+	[31mmodified:   .Rproj.user/9D5F2762/console06/INDEX001[m
+	[31mmodified:   .Rproj.user/9D5F2762/sources/prop/7166558F[m
+	[31mmodified:   .Rproj.user/9D5F2762/sources/prop/INDEX[m
+	[31mdeleted:    .Rproj.user/9D5F2762/sources/s-34C79E41/8204DD71[m
+	[31mdeleted:    .Rproj.user/9D5F2762/sources/s-34C79E41/8204DD71-contents[m
+	[31mdeleted:    .Rproj.user/9D5F2762/sources/s-34C79E41/lock_file[m
+	[31mmodified:   import.R[m
+	[31mmodified:   visualize.R[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.gitignore[m
+	[31mfont/[m
+	[31mmetallica.rds[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;/home/rafa/Desktop/spoti(base) rafa@rafa-VirtualBox:~/Desktop/spoti(master)$ git add -A

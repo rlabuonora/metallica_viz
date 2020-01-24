@@ -1,5 +1,6 @@
 library(spotifyr)
 library(tidyverse)
+library(lubridate)
 
 # https://www.kaylinpavlik.com/song-distance/
 
@@ -7,11 +8,10 @@ METALLICA_ID <- "2ye2Wgw4gimLv2eAKyk1NB"
 metallica_albums <- get_artist_albums(id=METALLICA_ID,
                                       include_groups = "album",
                                       limit = 50) %>% 
-  select(album_name=name, album_id=id) %>% 
+  select(album_name=name, album_id=id, release_date) %>% 
   slice(6, 11, 13, 17, 19, 21, 26, 30, 35, 39, 43)
 
 
-# duration, loudness, tempo
 
 get_album_tracks <- function(album_id, album_name) {
   # get track name, track id & album name (add all album.level data here)
@@ -39,5 +39,19 @@ metallica_tracks <- metallica_albums %>%
   flatten %>% 
   map_df(function(x) {
     get_track_info(x$track_id, x$track_name, x$album_name)
-  })
+  }) 
+
+metallica_tracks_df <- metallica_tracks %>% 
+  left_join(metallica_albums) %>% 
+  mutate(album_name = str_remove(album_name, "\\(Remastered\\)")) %>% 
+  mutate(track_name = str_remove(track_name, " - Remastered")) %>% 
+  mutate(track_name = str_remove(track_name, "\\(Remastered\\)")) %>% 
+  mutate(release_date = year(as_date(release_date))) %>% 
+  group_by(album_name) %>% 
+  mutate(track_num = row_number()) %>% 
+  arrange(release_date, track_num)
+
+
+saveRDS(metallica_tracks_df, file="metallica.rds")
+
 
