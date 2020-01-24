@@ -1,12 +1,16 @@
 # incluir imagenes en ggplots:
 # https://drmowinckels.io/blog/adding-external-images-to-plots/
 
+# https://www.kaylinpavlik.com/song-distance/
+
+
 # ggimage
 
 theme_set(theme_minimal())
 
 library(tidyverse)
 library(ggplot2)
+library(jpeg)
 
 metallica <- readRDS("metallica.rds")
 
@@ -87,7 +91,12 @@ loudness <- metallica %>%
   geom_smooth(se=FALSE, color = "black") + 
   guides(color=FALSE) + 
   labs(title = "Song loudness over time", x="Album", y="Loudness (BPM)")
+  
 
+# Add one cover  
+reload <- readJPEG("covers/Reload.jpg")
+g <-  rasterGrob(reload, interpolate=TRUE)
 
+loudness + annotation_custom(grob=g, xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf)
 # find similar songs
   
