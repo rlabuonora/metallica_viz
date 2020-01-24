@@ -7,11 +7,18 @@ library(lubridate)
 METALLICA_ID <- "2ye2Wgw4gimLv2eAKyk1NB"
 metallica_albums <- get_artist_albums(id=METALLICA_ID,
                                       include_groups = "album",
-                                      limit = 50) %>% 
-  select(album_name=name, album_id=id, release_date) %>% 
+                                      limit = 50) %>%
   slice(6, 11, 13, 17, 19, 21, 26, 30, 35, 39, 43)
 
 
+metallica_albums$cover_url <- metallica_albums$images %>% 
+  purrr::map("url") %>% 
+  purrr::map(3)
+
+
+metallica_albums <- metallica_albums %>% 
+  select(album_name=name, album_id=id, release_date, cover_url) 
+  
 
 get_album_tracks <- function(album_id, album_name) {
   # get track name, track id & album name (add all album.level data here)
@@ -54,4 +61,14 @@ metallica_tracks_df <- metallica_tracks %>%
 
 saveRDS(metallica_tracks_df, file="metallica.rds")
 
+
+
+download_cover <- function(url, album_name) {
+  file_name <- glue::glue("{album_name}.jpg")
+  dest <- file.path("covers", file_name)
+  download.file(url, destfile=dest)
+}
+
+purrr::map2(metallica_albums$cover_url,
+            metallica_albums$album_name, download_cover)
 

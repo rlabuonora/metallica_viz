@@ -56,12 +56,38 @@ metallica %>%
   labs(title = "Instrumentalness") + 
   guides(fill=FALSE)
 
-metallica %>% 
+
+
+# Evolution of tempo
+tempo <- metallica %>% 
   ggplot(aes(track_name, tempo, color = album_name, group = 1)) + 
   scale_x_discrete(breaks = NULL) +
   geom_point() +
   geom_smooth(se=FALSE) + 
   geom_smooth(aes(group=album_name), se = FALSE, method = "lm", formula = y~1) + 
   guides(color=FALSE) + 
-  labs(title = "Song tempo over time")
+  labs(title = "Song tempo over time", x="Albums", y="Tempo (BPM)")
 
+# Evolution of energy
+energy <- metallica %>% 
+  ggplot(aes(track_name, energy, color = album_name, group = 1)) + 
+  scale_x_discrete(breaks = NULL) +
+  geom_point() +
+  geom_smooth(se=FALSE) + 
+  geom_smooth(aes(group=album_name), se = FALSE, method = "lm", formula = y~1) + 
+  guides(color=FALSE) + 
+  labs(title = "Song energy over time", x="Albums", y="Energy (BPM)")
+
+
+# Album is discrete
+loudness <- metallica %>% 
+  ggplot(aes(album_name, loudness, group = 1)) + 
+  scale_x_discrete(breaks = NULL) +
+  geom_point(color="gray60", fill="gray80", shape=21) +
+  geom_smooth(se=FALSE, color = "black") + 
+  guides(color=FALSE) + 
+  labs(title = "Song loudness over time", x="Album", y="Loudness (BPM)")
+
+
+# find similar songs
+  
