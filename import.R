@@ -8,7 +8,7 @@ metallica_albums <- get_artist_albums(id=METALLICA_ID,
                                       include_groups = "album",
                                       limit = 50) %>%
   slice(6, 11, 13, 17, 19, 21, 26, 30, 35, 39, 43) %>% 
-  mutate(album_name = str_remove(album_name, "\\(Remastered\\)"))
+  mutate(release_year = year(as_date(release_date)))
 
 
 metallica_albums$cover_url <- metallica_albums$images %>% 
@@ -62,13 +62,17 @@ metallica_tracks_df <- metallica_tracks %>%
 saveRDS(metallica_tracks_df, file="data/metallica.rds")
 
 
-
-download_cover <- function(url, album_name) {
-  file_name <- glue::glue("{album_name}.jpg")
+# TODO - Add number
+download_cover <- function(url, release_year) {
+  file_name <- glue::glue("{release_year}.jpg")
   dest <- file.path("covers", file_name)
   download.file(url, destfile=dest)
 }
 
-purrr::map2(metallica_albums$cover_url,
-            metallica_albums$album_name, download_cover)
+purrr::walk2(metallica_albums$cover_url,
+            metallica_albums$release_year, 
+            download_cover)
 
+hardcoded_url <- "https://i.scdn.co/image/ab67616d00004851f2651ad6c2b8c509055f410e"
+
+download_cover(hardcoded_url, "hardwired")
